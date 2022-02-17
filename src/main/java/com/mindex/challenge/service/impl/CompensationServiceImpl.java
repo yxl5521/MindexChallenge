@@ -60,6 +60,11 @@ public class CompensationServiceImpl implements CompensationService {
         return comp;
     }
 
+    /**
+     * Get the compensation using employee id
+     * @param id The employee Id
+     * @return The retrieved compensation
+     */
     @Override
     public Compensation read(String id) {
         LOG.debug("Get compensation with id [{}]", id);

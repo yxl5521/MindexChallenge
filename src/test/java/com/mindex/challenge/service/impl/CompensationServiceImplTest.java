@@ -13,9 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.time.LocalDate;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -53,7 +50,6 @@ public class CompensationServiceImplTest {
         testComp.setSalary("100,000");
         testComp.setEmployeeId(testEmployee.getEmployeeId());
         testComp.setEffectiveDate("2022-01-17");
-        LocalDate localDate = LocalDate.parse("2022-01-17");
         // Create checks
         Compensation createdComp = restTemplate.postForEntity(compUrl, testComp, Compensation.class).getBody();
 
