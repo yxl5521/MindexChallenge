@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
  *
  * The controller for reporting structure
  */
+@RestController
 public class ReportingStructureController {
 
     private static final Logger LOG = LoggerFactory.getLogger(ReportingStructureController.class);
