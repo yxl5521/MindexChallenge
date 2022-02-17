@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
  * @author Jasmine Liang
  * @email: yxl5521@rit.edu
  * @date: 2022-02-17
+ *
+ * The controller for reporting structure
  */
 public class ReportingStructureController {
 
