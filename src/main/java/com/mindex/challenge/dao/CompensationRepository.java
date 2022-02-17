@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CompensationRepository extends MongoRepository<Compensation, String> {
-    @Query("{employee.$employeeId: ?0}")
+    @Query("{'employee.employeeId': ?0}")
     Compensation findByEmployeeId(String id);
 }

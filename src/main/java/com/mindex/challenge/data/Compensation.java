@@ -1,8 +1,11 @@
 package com.mindex.challenge.data;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
 /**
@@ -14,7 +17,8 @@ import java.time.ZonedDateTime;
 @Getter
 public class Compensation {
     private Employee employee;
-    private ZonedDateTime effectiveDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate effectiveDate;
     private String salary;
 
     @Override
