@@ -4,8 +4,94 @@ A simple [Spring Boot](https://projects.spring.io/spring-boot/) web application 
 with data. The application contains information about all employees at a company. On application start-up, an in-memory 
 Mongo database is bootstrapped with a serialized snapshot of the database. While the application runs, the data may be
 accessed and mutated in the database without impacting the snapshot.
+## What's Implemented
+### Task 1
+One endpoint created:
+```
+* READ
+    * HTTP Method: GET 
+    * URL: localhost:8080/structure/{id}
+    * RESPONSE: ReportingStructure
+```
+Classes:
+- ReportingStructure: The reporting structure entity
+- ReportingStructureService/Impl: The logics for reading the reporting structure
+- ReportingStructureController: Include the one endpoint described above  
 
+ReportingStructure has a JSON scheme of:
+```json
+{
+  "type":"ReportingStructure",
+  "properties": {
+    "employee": {
+      "type": "employee"
+    },
+    "numberOfReports": {
+      "type": "integer"
+    }
+  }
+}
+```
+### Task 2
+Two endpoints created:
+```
+* CREATE
+    * HTTP Method: POST 
+    * URL: localhost:8080/compensation
+    * PAYLOAD: CompensationInput
+    * RESPONSE: Compensation
+* READ
+    * HTTP Method: GET 
+    * URL: localhost:8080/compensation/{id}
+    * RESPONSE: Compensation
+```
+Classes:
+- Compensation: The compensation data, save the fields needed
+- CompensationInput: The input body for creating new compensation, only input employeeId without the need for the whole thing. 
+- CompensationService/CompensationServiceImpl: The logic for saving and reading compensation
+- CompensationController: Include the two endpoints described above
+- CompensationRepository: Get the compensation from mongoDB using employee id  
+```
+Note: Currently design as one employee with one compensation. Need to know what to do when salary change.
+- ```
+
+Compensation has a JSON scheme of:
+```json
+{
+  "type":"Compensation",
+  "properties": {
+    "employee": {
+      "type": "employee"
+    },
+    "effectiveDate": {
+      "type": "LocalDate"
+    },
+    "salary": {
+      "type": "string"
+    }
+  }
+}
+```
+
+CompensationInput has a JSON scheme of:
+```json
+{
+  "type":"Compensation",
+  "properties": {
+    "employeeId": {
+      "type": "string"
+    },
+    "effectiveDate": {
+      "type": "string"
+    },
+    "salary": {
+      "type": "string"
+    }
+  }
+}
+```
 ### How to Run
+Build the application by running `gradle build`
 The application may be executed by running `gradlew bootRun`.
 
 ### How to Use
